@@ -195,6 +195,7 @@
 
   // Determine whether all of the elements match a truth test.
   _.every = function(collection, iterator) {
+    
     // TIP: Try re-using reduce() here.
   };
 
@@ -295,6 +296,14 @@
   // input array. For a tip on how to make a copy of an array, see:
   // http://mdn.io/Array.prototype.slice
   _.shuffle = function(array) {
+    var newArray = array.slice(0, array.length);
+    var results = [];
+    while(newArray.length){
+      var newIndex = Math.floor(Math.random()*newArray.length);
+      results.push(newArray[newIndex]);
+      newArray.splice(newIndex, 1);    
+    }
+    return results;
   };
 
 
