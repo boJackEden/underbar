@@ -110,12 +110,7 @@
   // Produce a duplicate-free version of the array.
   _.uniq = function(array) {
     var results = [];
-    _.each(array, function(element){
-    if(_.indexOf(results, element) !== -1){
-      results.push(element);
-        }
-      });
-    return results; 
+
   };
 
 
@@ -172,9 +167,9 @@
   _.reduce = function(collection, iterator, accumulator) {
     if(accumulator === undefined){
       accumulator = collection.shift();
-    }
+    } 
     _.each(collection, function(element){
-      accumulator = iterator(element, accumulator);
+      accumulator = iterator(accumulator, element);
     });
     return accumulator;
   };
