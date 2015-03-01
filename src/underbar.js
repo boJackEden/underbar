@@ -200,7 +200,7 @@
         return false;
       }
       if(iterator === undefined){
-        iterator = _.identity
+        iterator = _.identity;
       }
       if(iterator(element)){
         return true;
@@ -213,8 +213,18 @@
 
   // Determine whether any of the elements pass a truth test. If no iterator is
   // provided, provide a default one
+  // TIP: There's a very clever way to re-use every() here.
   _.some = function(collection, iterator) {
-    // TIP: There's a very clever way to re-use every() here.
+    var result = false;
+    if(iterator === undefined){
+      iterator = _.identity;
+    }
+      _.each(collection, function(element){
+        if(iterator(element)){
+          result = true; 
+        }
+      });
+    return result;
   };
 
 
